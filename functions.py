@@ -44,6 +44,12 @@ def example_keyword(first, second=None, third='Second', **kwargs):
 
 print(example_keyword('1', 2, "Third", a="a1", b="b1"))
 
+
+def args(a,b,/,c,d,*,f,g):
+    print(a,b,c,d,f,g)
+    
+args(1,2,3,4,f=5,g=6)
+
 """Positional-only і keyword-only маркери — цього немає прямого еквівалента в JS, 
 і це специфічно для Python:"""
 
