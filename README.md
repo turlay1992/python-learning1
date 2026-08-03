@@ -26,3 +26,7 @@ PATH — додає .venv\Scripts (або .venv/bin) на початок, том
 Після активації pip install і python script.py працюють у межах цього ізольованого середовища. Деактивація — просто команда deactivate.
 
 Оскільки ти на Windows — використовуй саме .venv\Scripts\activate 
+
+
+pip install mypy
+mypy --strict fizzbuzz.py

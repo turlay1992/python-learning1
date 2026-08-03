@@ -44,3 +44,13 @@ def example_keyword(first, second=None, third='Second', **kwargs):
 
 print(example_keyword('1', 2, "Third", a="a1", b="b1"))
 
+"""Positional-only і keyword-only маркери — цього немає прямого еквівалента в JS, 
+і це специфічно для Python:"""
+
+def f(a: int, b: int, /, c: int, d: int, *, e: int, f: int) -> int:
+    return a + b + c + d + e + f
+#        ^-------^  позиційні тільки       ^-------^ іменовані тільки
+#          (до /)                            (після *)
+#                  a, b, c, d - можна звичайно (позиційно чи іменовано, крім a,b)
+
+# --------------------------------------------------------------

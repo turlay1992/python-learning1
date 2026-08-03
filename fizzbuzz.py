@@ -15,8 +15,8 @@ def get_division_result(number: int) -> str:
 # for i in range(1, count_of_iterations + 1):
 #     print(f"{i}: {get_division_result(i)}")
 
-fruits: list[str] = ["apple", "banana", "cherry"]
-user: dict[str, str | int | list[str]] = {"name": "Roman", "age": 30, "eat": fruits}
+# fruits: list[str] = ["apple", "banana", "cherry"]
+# user: dict[str, str | int | list[str]] = {"name": "Roman", "age": 30, "eat": fruits}
 
 
 # Work with collections-------------------------------------
@@ -37,7 +37,9 @@ def get_fruits_entry(fruits: list[str]) -> tuple[str, int]:
         
     print(f'{fruits_dict}')
     
-    max_entries_name: str = max(fruits_dict, key=fruits_dict.get)
+    # Error in --strict mode (get can return None)
+    # max_entries_name: str = max(fruits_dict, key=fruits_dict.get) 
+    max_entries_name: str = max(fruits_dict, key=lambda fruit: fruits_dict[fruit])
     return (max_entries_name, fruits_dict[max_entries_name])
 
 
