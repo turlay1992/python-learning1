@@ -27,6 +27,12 @@ PATH — додає .venv\Scripts (або .venv/bin) на початок, том
 
 Оскільки ти на Windows — використовуй саме .venv\Scripts\activate 
 
+Install dependencies from .toml file
+python -m pip install -e .
 
 pip install mypy
 mypy --strict fizzbuzz.py
+
+pip install tzdata
+OR
+python -m pip install tzdata
