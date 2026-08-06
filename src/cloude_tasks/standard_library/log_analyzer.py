@@ -21,7 +21,6 @@ LOG_FILE: Path = LOG_DIR / 'events.log'
 
 now_kyiv: datetime = datetime.now(ZoneInfo("Europe/Kyiv"))
 
-#cloude_tasks\standard_library\log_analyzer.py
 
 if LOG_FILE.exists():
     print('LOG_FILE already exist')

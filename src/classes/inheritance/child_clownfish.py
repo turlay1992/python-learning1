@@ -1,4 +1,4 @@
-from child_lancelet import Lancelet
+from src.classes.inheritance.child_lancelet import Lancelet
 
 
 class Clownfish(Lancelet):

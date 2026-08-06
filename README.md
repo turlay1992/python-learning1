@@ -4,6 +4,8 @@ bash
   # .venv\Scripts\activate    # активувати (Windows)
   pip install requests        # ставиться ЛИШЕ всередині .venv, не глобально
 
+  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
 Після активації pip та python в терміналі вказують на версії всередині .venv, а не на системний Python. Це найближчий аналог до того, що node_modules + package.json роблять автоматично в Node — тільки в Python це явний, ручний крок.
 
 .venv не комітиться в git (як і node_modules) — комітиться лише список залежностей (requirements.txt або pyproject.toml — аналог package.json).

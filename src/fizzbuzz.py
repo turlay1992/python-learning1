@@ -12,8 +12,8 @@ def get_division_result(number: int) -> str:
         return str(number)
     
 
-# for i in range(1, count_of_iterations + 1):
-#     print(f"{i}: {get_division_result(i)}")
+for i in range(1, count_of_iterations + 1):
+    print(f"{i}: {get_division_result(i)}")
 
 # fruits: list[str] = ["apple", "banana", "cherry"]
 # user: dict[str, str | int | list[str]] = {"name": "Roman", "age": 30, "eat": fruits}

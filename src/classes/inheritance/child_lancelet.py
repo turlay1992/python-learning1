@@ -1,4 +1,4 @@
-from base_amoeba import Amoeba
+from src.classes.inheritance.base_amoeba import Amoeba
 
 
 class Lancelet(Amoeba):
