@@ -1,12 +1,16 @@
 README.md
 pyproject.toml
+src/__init__.py
 src/fizzbuzz.py
 src/classes/inheritance/base_amoeba.py
 src/classes/inheritance/child_clownfish.py
 src/classes/inheritance/child_lancelet.py
+src/cloude_tasks/__init__.py
 src/cloude_tasks/functions.py
+src/cloude_tasks/classes/__init__.py
 src/cloude_tasks/classes/class_methods.py
 src/cloude_tasks/classes/order_statuses.py
+src/cloude_tasks/exceptions/__init__.py
 src/cloude_tasks/exceptions/examples.py
 src/cloude_tasks/standard_library/examples.py
 src/cloude_tasks/standard_library/log_analyzer.py
@@ -15,6 +19,7 @@ src/my_backend1.egg-info/SOURCES.txt
 src/my_backend1.egg-info/dependency_links.txt
 src/my_backend1.egg-info/requires.txt
 src/my_backend1.egg-info/top_level.txt
+src/syntax/IO_Files.py
 src/syntax/conditions.py
 src/syntax/functions.py
 src/syntax/loops.py

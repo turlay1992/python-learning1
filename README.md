@@ -34,6 +34,7 @@ python -m pip install -e .
 
 pip install mypy
 mypy --strict fizzbuzz.py
+python -m mypy --strict .\src\cloude_tasks\classes\class_methods.py
 
 pip install tzdata
 OR

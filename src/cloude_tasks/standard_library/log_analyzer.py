@@ -15,8 +15,8 @@ from zoneinfo import ZoneInfo
 
 
 BASE_DIR: Path = Path.cwd()
-LOG_DIR: Path = BASE_DIR / 'cloude_tasks'  / 'standard_library'
-LOG_DIR.mkdir(parents=True, exist_ok=True)
+LOG_DIR: Path = BASE_DIR / 'src' / 'cloude_tasks'  / 'standard_library'
+# LOG_DIR.mkdir(parents=True, exist_ok=True)
 LOG_FILE: Path = LOG_DIR / 'events.log' 
 
 now_kyiv: datetime = datetime.now(ZoneInfo("Europe/Kyiv"))

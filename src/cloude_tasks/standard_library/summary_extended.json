@@ -1,0 +1,26 @@
+{
+    "created_at": "2026-08-07 15:49:10.855705+03:00",
+    "level_count": {
+        "ERROR": 4,
+        "INFO": 4,
+        "WARNING": 2
+    },
+    "messages": {
+        "ERROR": [
+            "Connection failed",
+            "Database timeout",
+            "Connection failed",
+            "Invalid password"
+        ],
+        "INFO": [
+            "User logged in",
+            "Backup started",
+            "Backup finished",
+            "User logged out"
+        ],
+        "WARNING": [
+            "Disk usage 85%",
+            "CPU temperature high"
+        ]
+    }
+}

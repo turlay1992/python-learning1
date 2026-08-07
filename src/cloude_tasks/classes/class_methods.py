@@ -27,7 +27,7 @@
 # InvalidAmountError з from e, щоб показати ланцюжок причин.
 
 from cloude_tasks.exceptions.examples import InsufficientFundsError, InvalidAmountError
-
+from pathlib import Path
 
 class BankAccount:
     bank_name: str = 'PrivatBank'
@@ -61,11 +61,39 @@ class BankAccount:
             raise InvalidAmountError()
 
         return amount
+
+def save_accounts(accounts: list[BankAccount], path: Path) -> None:
+    with open(path, 'w', encoding='utf-8') as file:
+        for account in accounts:
+            file.write(f'{','.join([account.owner, str(account.balance)])}\n')
+            
+def load_accounts(path: Path) -> list[BankAccount]:
+    accounts: list[BankAccount] = []
+    with open(path, 'r', encoding='utf-8') as file:
+        for line in file:
+            owner, balance = line.strip().split(',')
+            accounts.append(BankAccount(owner, float(balance)))
+    return accounts     
     
 if __name__ == "__main__":
+    BASE_DIR: Path = Path.cwd()
+    TARGET_DIR: Path = BASE_DIR / 'src' / 'cloude_tasks' / 'classes'
+    TARGET_FILE: Path = TARGET_DIR / 'bank_accounts.txt'
+
+    account_owner_names: list[str] = ['Sergey', 'Igor', 'Tanya', 'Mikhael', 'Lena', 'Mark']
+    account_owner_balances: list[float] = [26, 34, 76, 23, 65]
+    
+    account_owners: list[BankAccount] = []
+    for i in range(len(account_owner_names)):
+        account_owners.append(
+            BankAccount(
+                account_owner_names[i],
+                account_owner_balances[i])
+        )
+    
     first_acc = BankAccount('Roman', 25)
-    first_acc.deposit(25)
     try:
+        first_acc.deposit(25)
         first_acc.withdraw('30')
         first_acc.withdraw('d30')
         first_acc.deposit(5)
@@ -80,7 +108,8 @@ if __name__ == "__main__":
         print(f'Операція успішна!')
     finally:
         print(f'Операція оброблена!')
-
+        
+        
     # second_acc = BankAccount.from_zero('Olena')
     # second_acc.deposit(20)
     # try:

@@ -1,0 +1,10 @@
+2026-08-01 ERROR Connection failed
+2026-08-01 INFO User logged in
+2026-08-01 WARNING Disk usage 85%
+2026-08-01 ERROR Database timeout
+2026-08-02 INFO Backup started
+2026-08-02 INFO Backup finished
+2026-08-02 ERROR Connection failed
+2026-08-03 INFO User logged out
+2026-08-03 WARNING CPU temperature high
+2026-08-03 ERROR Invalid password
