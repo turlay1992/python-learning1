@@ -1,6 +1,5 @@
 README.md
 pyproject.toml
-src/__init__.py
 src/fizzbuzz.py
 src/classes/inheritance/base_amoeba.py
 src/classes/inheritance/child_clownfish.py

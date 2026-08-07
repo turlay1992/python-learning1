@@ -1,0 +1,6 @@
+Sergey,26
+Igor,34
+Tanya,76
+Mikhael,23
+Lena,65
+Mark,0.0

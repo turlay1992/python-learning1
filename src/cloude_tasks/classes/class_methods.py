@@ -85,29 +85,40 @@ if __name__ == "__main__":
     
     account_owners: list[BankAccount] = []
     for i in range(len(account_owner_names)):
-        account_owners.append(
-            BankAccount(
-                account_owner_names[i],
-                account_owner_balances[i])
-        )
+        try:
+            account_owners.append(
+                        BankAccount(
+                            account_owner_names[i],
+                            account_owner_balances[i])
+                    )
+        except IndexError as e:
+            account_owners.append(BankAccount.from_zero(account_owner_names[i]))
+            print(f'Error during filling account_owners for {account_owner_names[i]}: {e}')
+            
     
-    first_acc = BankAccount('Roman', 25)
-    try:
-        first_acc.deposit(25)
-        first_acc.withdraw('30')
-        first_acc.withdraw('d30')
-        first_acc.deposit(5)
-        first_acc.withdraw(30)
-    except InsufficientFundsError as e:
-        print(f'Помилка: {e}')
-    except InvalidAmountError as e:
-        print(f'Помилка: {e}')
-    except RuntimeError as e:
-        print(f'Невідома помилка: {e}')
-    else:
-        print(f'Операція успішна!')
-    finally:
-        print(f'Операція оброблена!')
+    save_accounts(account_owners, TARGET_FILE)
+    
+    account_owners: list[BankAccount] = load_accounts(TARGET_FILE)
+    for i in account_owners:
+        print(f'{i.owner} - {i.balance}')
+    
+    # first_acc = BankAccount('Roman', 25)
+    # try:
+    #     first_acc.deposit(25)
+    #     first_acc.withdraw('30')
+    #     first_acc.withdraw('d30')
+    #     first_acc.deposit(5)
+    #     first_acc.withdraw(30)
+    # except InsufficientFundsError as e:
+    #     print(f'Помилка: {e}')
+    # except InvalidAmountError as e:
+    #     print(f'Помилка: {e}')
+    # except RuntimeError as e:
+    #     print(f'Невідома помилка: {e}')
+    # else:
+    #     print(f'Операція успішна!')
+    # finally:
+    #     print(f'Операція оброблена!')
         
         
     # second_acc = BankAccount.from_zero('Olena')

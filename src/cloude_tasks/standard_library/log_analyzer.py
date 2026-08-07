@@ -18,6 +18,7 @@ BASE_DIR: Path = Path.cwd()
 LOG_DIR: Path = BASE_DIR / 'src' / 'cloude_tasks'  / 'standard_library'
 # LOG_DIR.mkdir(parents=True, exist_ok=True)
 LOG_FILE: Path = LOG_DIR / 'events.log' 
+LOG_FILE_BACKUP: Path = LOG_DIR / 'events_backup.log' 
 
 now_kyiv: datetime = datetime.now(ZoneInfo("Europe/Kyiv"))
 
@@ -44,6 +45,13 @@ logs: list[str] = [
 with open(LOG_FILE, 'w', encoding='utf-8') as file:
     for log in logs:
         file.write(log + '\n')
+        
+
+with open(LOG_FILE, "rb") as src, open(LOG_FILE_BACKUP, "wb") as dst:
+    dst.write(src.read())
+
+
+print(LOG_FILE.read_bytes() == LOG_FILE_BACKUP.read_bytes())
         
 
 total = 0
