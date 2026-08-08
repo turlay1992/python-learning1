@@ -28,6 +28,7 @@
 
 from cloude_tasks.exceptions.examples import InsufficientFundsError, InvalidAmountError
 from pathlib import Path
+from itertools import zip_longest
 
 class BankAccount:
     bank_name: str = 'PrivatBank'
@@ -84,23 +85,26 @@ if __name__ == "__main__":
     account_owner_balances: list[float] = [26, 34, 76, 23, 65]
     
     account_owners: list[BankAccount] = []
-    for i in range(len(account_owner_names)):
-        try:
-            account_owners.append(
-                        BankAccount(
-                            account_owner_names[i],
-                            account_owner_balances[i])
-                    )
-        except IndexError as e:
-            account_owners.append(BankAccount.from_zero(account_owner_names[i]))
-            print(f'Error during filling account_owners for {account_owner_names[i]}: {e}')
+    
+    # zip_longest об'єднає списки. Якщо елемент відсутній, він підставить None
+    for name, balance in zip_longest(account_owner_names, account_owner_balances, fillvalue=None):
+        # Спочатку перевіряємо, чи взагалі є ім'я
+        if name is not None:
+            if balance is not None:
+                account_owners.append(BankAccount(name, balance))
+            else:
+                account_owners.append(BankAccount.from_zero(name))
+                print(f'No balance provided for {name}, created with zero balance.')
+        else:
+            # Цей блок спрацює, якщо балансів більше, ніж імен
+            print("Знайдено баланс без власника рахунку!")
             
     
-    save_accounts(account_owners, TARGET_FILE)
+    save_accounts(account_owners, TARGET_FILE) # will create txt file with records
     
-    account_owners: list[BankAccount] = load_accounts(TARGET_FILE)
-    for i in account_owners:
-        print(f'{i.owner} - {i.balance}')
+    account_owners = load_accounts(TARGET_FILE)
+    for account in account_owners:
+        print(f'{account.owner} - {account.balance}')
     
     # first_acc = BankAccount('Roman', 25)
     # try:
