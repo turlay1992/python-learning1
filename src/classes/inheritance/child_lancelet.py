@@ -1,4 +1,4 @@
-from src.classes.inheritance.base_amoeba import Amoeba
+from classes.inheritance.base_amoeba import Amoeba
 
 
 class Lancelet(Amoeba):
@@ -6,12 +6,12 @@ class Lancelet(Amoeba):
     support: str = "notochord"
     
     @classmethod
-    def describe(cls):
+    def describe(cls) -> str:
         description = super().describe()
         return description + f' It has {cls.support} for support.'
     
     @staticmethod
-    def move(direction: str):
+    def move(direction: str) -> None:
         print(f'Moves to the {direction} with muscles')
         
     def eat(self, subject: str):

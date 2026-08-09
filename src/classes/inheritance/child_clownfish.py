@@ -1,4 +1,4 @@
-from src.classes.inheritance.child_lancelet import Lancelet
+from classes.inheritance.child_lancelet import Lancelet
 
 
 class Clownfish(Lancelet):
@@ -21,7 +21,7 @@ class Clownfish(Lancelet):
         self.hidden = False
         self.move('forward')
         
-    def eat(self, subject):
+    def eat(self, subject: str) -> None:
         print(f"{self.name.capitalize()} eats {subject} "
               f"since it is {self.feeding_type}")
         
