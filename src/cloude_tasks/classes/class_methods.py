@@ -31,6 +31,16 @@ from pathlib import Path
 from itertools import zip_longest
 
 class BankAccount:
+    """Create Bank account and provide functionality for manage
+    
+    Args:
+        owner: account name
+        [balance]: start value of balance for new account
+
+    Raises:
+        InsufficientFundsError: if not enough balance for operation
+        InvalidAmountError: if incorrect value during operation
+    """
     bank_name: str = 'PrivatBank'
     
     def __init__(self, owner: str, balance: float = 0.0) -> None:
@@ -38,10 +48,27 @@ class BankAccount:
         self.balance: float = balance
         
     def deposit(self, amount: float | str) -> None:
+        """Increase account balance
+
+        Args:
+            amount (float | str): amount to increase balance
+            
+        Raises:
+            InvalidAmountError: if incorrect value during operation
+        """
         amount = BankAccount.validate_amount(amount)
         self.balance += amount
     
     def withdraw(self, amount: float | str) -> None:
+        """Decrease account balance
+
+        Args:
+            amount (float | str): amount to decrease balance
+            
+        Raises:
+            InsufficientFundsError: if not enough balance 
+            InvalidAmountError: if incorrect value during operation
+        """
         amount = BankAccount.validate_amount(amount)
         if self.balance < amount:
             raise InsufficientFundsError(self.owner, amount, self.balance)
@@ -50,10 +77,29 @@ class BankAccount:
             
     @classmethod
     def from_zero(cls, owner: str) -> 'BankAccount':
+        """Create new BankAccount instance with default(0.0) balance
+
+        Args:
+            owner (str): account name
+
+        Returns:
+            BankAccount: BankAccount instance
+        """
         return cls(owner)
     
     @staticmethod
     def validate_amount(amount: float | str) -> float:
+        """Validate amount for operation
+
+        Args:
+            amount (float | str): Value for validation
+
+        Raises:
+            InvalidAmountError: if incorrect value for operation
+
+        Returns:
+            float: validated amount
+        """
         try:
             amount = float(amount)
         except (TypeError, ValueError) as e:

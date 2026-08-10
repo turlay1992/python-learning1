@@ -1,5 +1,12 @@
 
 class InsufficientFundsError(Exception):
+    """Raise if not enough balance for operation
+
+    Args:
+        owner: account name
+        requested: requested amount for description of issue
+        available: available amount for description of issue
+    """
     def __init__(self, owner: str, requested: float, available: float) -> None:
         self.owner = owner
         self.requested = requested
@@ -9,6 +16,8 @@ class InsufficientFundsError(Exception):
         )
 
 class InvalidAmountError(Exception):
+    """Raise if value type is not number or number <= 0  
+    """
     def __init__(self) -> None:
         super().__init__("Сума ≤ 0")
 
