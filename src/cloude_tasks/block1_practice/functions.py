@@ -73,3 +73,61 @@ def capitalize_words(text: str) -> str:
     return ' '.join(capitalized_words)
 
 print(capitalize_words('Зробити кожне слово в реченні з великої букви — без використання str.title()'))
+
+
+# 5
+def increse_price_on_percent(items: dict[str, float], percent: int = 10) -> dict[str, float]:
+    copy_items = items.copy()
+    for title, price in copy_items.items():
+        copy_items[title] = round(price + price * (percent / 100), 2)
+        
+    return copy_items
+
+print(increse_price_on_percent(
+    {
+        'Item 1': 25,
+        'Item 2': 75
+    }
+))
+
+# 6
+def invert_key_value(original: dict[str, int]) -> dict[int, list[str]]:
+    inverted: dict[int, list[str]] = {}
+
+    for key, value in original.items():
+        inverted.setdefault(value, []).append(key)
+    
+    return inverted
+    
+print(invert_key_value(
+    {'a': 1, 'b': 2, 'c': 1, 'd': 2, 'e': 3}
+))
+
+
+# 7
+from typing import TypeAlias, TypedDict
+class UserItem(TypedDict):
+    name: str
+    age: int
+Item_7_type: TypeAlias = list[UserItem]
+
+def group_users_by_age10(original: Item_7_type) -> dict[int, list[str]]:
+    groups: dict[int, list[str]] = {}
+    
+    for user_dict in original:
+        name = user_dict["name"]
+        age = user_dict["age"]
+        group_name: int = (age // 10) * 10
+        groups.setdefault(group_name, []).append(name)
+        
+    return groups
+        
+print(group_users_by_age10(
+    [
+        {"name": "Олексій", "age": 30},
+        {"name": "Марія", "age": 25},
+        {"name": "Mepi", "age": 28},
+        {"name": "Оксана", "age": 47},
+        {"name": "Олег", "age": 13}
+    ]
+))
