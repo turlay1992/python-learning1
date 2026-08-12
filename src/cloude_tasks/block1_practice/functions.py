@@ -131,3 +131,44 @@ print(group_users_by_age10(
         {"name": "Олег", "age": 13}
     ]
 ))
+
+
+# 8
+def join_dicts_and_sum_by_key(*dicts: dict[str, int]) -> dict[str, int]:
+    """Return new dict with sum of values if same key"""
+    
+    result: dict[str, int] = {}
+    for d in dicts:
+        for name, age in d.items():
+            result[name] = result.get(name, 0) + age
+    
+    return result
+
+print(join_dicts_and_sum_by_key(
+    {"Олексій": 30},
+    {"Марія": 25},
+    {"Mepi": 28},
+    {"Оксана": 47},
+    {"Олег": 13},
+    {"Олексій": 13}
+))
+
+# 9
+from pathlib import Path
+
+def parse_CSV_to_dict(path: Path) -> list[dict[str, list[str]]]:
+    """Parse CSV file and return sets by keys"""
+    
+    result: list[dict[str, list[str]]] = []
+    csv_keys: list[str] = []
+    values: list[list[str]] = []
+    with open(path, 'r', encoding='utf-8') as file:
+        for line_num, line in enumerate(file, start=1):
+            line_list: list[str] = line.strip().split(',')
+            
+            if line_num == 1:
+                csv_keys = line_list
+            else:
+                values.append(line_list)
+    return result
+        
