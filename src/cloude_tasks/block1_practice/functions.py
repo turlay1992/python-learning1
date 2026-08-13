@@ -77,6 +77,7 @@ print(capitalize_words('Зробити кожне слово в реченні �
 
 # 5
 def increse_price_on_percent(items: dict[str, float], percent: int = 10) -> dict[str, float]:
+    """Return item with increased value on percent"""
     copy_items = items.copy()
     for title, price in copy_items.items():
         copy_items[title] = round(price + price * (percent / 100), 2)
@@ -92,6 +93,7 @@ print(increse_price_on_percent(
 
 # 6
 def invert_key_value(original: dict[str, int]) -> dict[int, list[str]]:
+    """Return dict with inverter key-value"""
     inverted: dict[int, list[str]] = {}
 
     for key, value in original.items():
@@ -112,6 +114,7 @@ class UserItem(TypedDict):
 Item_7_type: TypeAlias = list[UserItem]
 
 def group_users_by_age10(original: Item_7_type) -> dict[int, list[str]]:
+    """Return groups of users drouped by (age // 10) * 10"""
     groups: dict[int, list[str]] = {}
     
     for user_dict in original:
@@ -155,13 +158,14 @@ print(join_dicts_and_sum_by_key(
 
 # 9
 from pathlib import Path
+from itertools import zip_longest
 
 def parse_CSV_to_dict(path: Path) -> list[dict[str, list[str]]]:
     """Parse CSV file and return sets by keys"""
     
     result: list[dict[str, list[str]]] = []
     csv_keys: list[str] = []
-    values: list[list[str]] = []
+    csv_values: list[list[str]] = []
     with open(path, 'r', encoding='utf-8') as file:
         for line_num, line in enumerate(file, start=1):
             line_list: list[str] = line.strip().split(',')
@@ -169,6 +173,30 @@ def parse_CSV_to_dict(path: Path) -> list[dict[str, list[str]]]:
             if line_num == 1:
                 csv_keys = line_list
             else:
-                values.append(line_list)
+                csv_values.append(line_list)
+    for key, *values in zip_longest(csv_keys, *csv_values, fillvalue=''):
+        result.append({key: values})
+    
     return result
-        
+
+BASE_DIR: Path = Path.cwd()
+LOG_FILE: Path = BASE_DIR / 'src' / 'cloude_tasks' / 'block1_practice' / 'test_users.csv'
+print(parse_CSV_to_dict(LOG_FILE))
+
+# 11
+from pathlib import Path
+def find_word_in_file(path: Path, search_term: str) -> list[dict[int, str]]:
+    """Parse CSV file and return line numbers and line texts"""
+    
+    result: list[dict[int, str]] = []
+    with open(path, 'r', encoding='utf-8') as file:
+            for line_num, line in enumerate(file, start=1):
+                if search_term in line:
+                    result.append({line_num: line.strip()})
+    
+    
+    return result
+
+BASE_DIR1: Path = Path.cwd()
+LOG_FILE1: Path = BASE_DIR1 / 'src' / 'cloude_tasks' / 'block1_practice' / 'test_users.csv'
+print(find_word_in_file(LOG_FILE1, 'Київ'))
