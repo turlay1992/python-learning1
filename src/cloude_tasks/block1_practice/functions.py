@@ -200,3 +200,29 @@ def find_word_in_file(path: Path, search_term: str) -> list[dict[int, str]]:
 BASE_DIR1: Path = Path.cwd()
 LOG_FILE1: Path = BASE_DIR1 / 'src' / 'cloude_tasks' / 'block1_practice' / 'test_users.csv'
 print(find_word_in_file(LOG_FILE1, 'Київ'))
+
+
+# 12
+
+class Rectangle:
+    """Simple calculation of area and square for rectangle"""
+    
+    def __init__(self, width: float, height: float):
+        self.width: float = width
+        self.height: float = height
+        
+    def area(self) -> float:
+        return self.width * self.height
+    
+    def perimeter(self) -> float:
+        return (self.width + self.height) * 2
+        
+    @classmethod
+    def square(cls, width: float) -> 'Rectangle':
+        return cls(width, width)
+    
+rect1: Rectangle = Rectangle(12, 34)
+print(f'Rect area: {rect1.area()}, Rect perimeter: {rect1.perimeter()}')
+
+square: Rectangle = Rectangle.square(13)
+print(f'Square area: {square.area()}, Square perimeter: {square.perimeter()}')
