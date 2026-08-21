@@ -4,11 +4,11 @@
 some_set1 = {"a", "b", "c", 2}
 some_list1 = [1, 3, 4, 6, 8, 8, 8, 8]
 
-some_set2 = set()
-some_set3 = set(some_list1)
+some_set2: set[str] = set()
+some_set3 = set(some_set1)
 
 # frozenset
-some_frozenset1 = frozenset()  # only way
+# some_frozenset1 = frozenset()  # only way
 
 
 # set from str

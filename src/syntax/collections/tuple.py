@@ -4,13 +4,13 @@ some_tuple3 = tuple('hello')
 
 # empty
 empty_tuple = ()
-empty_tuple2 = tuple()
+# empty_tuple2 = tuple()
 
 # creating variables by unpack
 a, b, c = (1, 2, 3)
 
 # swapping
-a, b = 'Yes', 'No'
+d, e = 'Yes', 'No'
 
 a, b = b, a
 

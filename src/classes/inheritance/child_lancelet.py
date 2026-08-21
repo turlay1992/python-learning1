@@ -14,7 +14,7 @@ class Lancelet(Amoeba):
     def move(direction: str) -> None:
         print(f'Moves to the {direction} with muscles')
         
-    def eat(self, subject: str):
+    def eat(self, subject: str) -> None:
         print(f'{self.name.capitalize()} filter water'
               f' to eat {subject}')
     

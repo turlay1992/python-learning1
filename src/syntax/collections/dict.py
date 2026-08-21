@@ -19,7 +19,7 @@ capital_cities = dict(
 #v3
 capital_cities = dict([["Ukraine", "Kiev"], ["USA", "Washington"]])
 #v4
-capital_cities = dict(1 = 'Kiev', USA = 'Washington')  # error should be str
+# capital_cities = dict(1 = 'Kiev', USA = 'Washington')  # error should be str
 
 #del
 del capital_cities['Venezuela']
@@ -34,7 +34,7 @@ for country in capital_cities:
     print(f" {country}: { capital_cities[country]}")
 
 # key with value
-for country, capital in capital_cities:
+for country, capital in capital_cities.items():
     print(country,  capital)
     
     
@@ -46,7 +46,7 @@ capital_cities.items()
 print(capital_cities)
 
 # pop
-print(capital_cities.pop()) # видаляє пару ключ значення зі словника, повертає значення.
+print(capital_cities.pop("Venezuela")) # видаляє пару ключ значення зі словника, повертає значення.
 print(capital_cities)
 
 # popitem
@@ -67,7 +67,7 @@ capital_cities.setdefault('Romania', 'Bucharest' ) # Повертає значе
 print(capital_cities)
 
 # fromkeys
-any_dictionary= {}
+any_dictionary: dict[str, str] = {}
 days_name_list = ['Monday', 'Thuesday', 'Wednesday']
 new_dictionary = any_dictionary.fromkeys(days_name_list, 'Day')
 print(f'{any_dictionary=}')
@@ -102,8 +102,8 @@ classmates_name = ['Sergey', 'Igor', 'Tanya', 'Mark', 'Sergey', 'Mikhael', 'Serg
 #       print(value)
 
 # Видалити всі ключі, значення яких починається з літери.
-only_int_keys: dict = {1: 'value', 'key': 123, 2: 'value', 'key2': 123}
-only_int_keys_copy: dict = only_int_keys.copy()
+only_int_keys: dict[str | int, str| int] = {1: 'value', 'key': 123, 2: 'value', 'key2': 123}
+only_int_keys_copy: dict[str | int, str| int] = only_int_keys.copy()
 for k in only_int_keys.keys():
    if type(k) == str:
       del only_int_keys_copy[k]

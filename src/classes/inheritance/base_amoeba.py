@@ -8,15 +8,15 @@ class Amoeba(object):
         self.name: str = name
     
     @classmethod
-    def describe(cls):
+    def describe(cls) -> str:
         return (f'{cls.__name__} has {cls.organisation} organisation'
                 f' and lives in {cls.habitation}.')
     
     @staticmethod
-    def move(direction: str):
+    def move(direction: str) -> None:
         print(f'Moves to the {direction} with pseudopodia')
         
-    def eat(self, subject: str):
+    def eat(self, subject: str) -> None:
         print(f'{self.name.capitalize()} grows pseudopodia'
               f' to eat {subject}')
         
